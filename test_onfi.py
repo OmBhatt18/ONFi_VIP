@@ -18,7 +18,7 @@ async def test_reset(dut):
 async def test_read_device_id(dut):
     """Test read device ID command."""
     await cocotb.start(generate_clock(dut))
-    addr = [0x00]  # Example address
+    addr = [0x00]  
     rv = await txn('read_device_id', addr=addr)
     dut._log.info(f"Read Device ID: {rv}")
 
@@ -26,7 +26,7 @@ async def test_read_device_id(dut):
 async def test_block_erase(dut):
     """Test block erase command."""
     await cocotb.start(generate_clock(dut))
-    addr = [0x00, 0x00, 0x01]  # Example address
+    addr = [0x00, 0x00, 0x01]  
     await txn('block_erase', addr=addr)
     await Timer(10, units='ns')
 
@@ -34,6 +34,6 @@ async def test_block_erase(dut):
 async def test_standard_read(dut):
     """Test standard read command."""
     await cocotb.start(generate_clock(dut))
-    addr = [0x00, 0x00, 0x00, 0x00, 0x00]  # Example address
+    addr = [0x00, 0x00, 0x00, 0x00, 0x00]  
     rv = await txn('standard_read', addr=addr)
     dut._log.info(f"Standard Read: {rv}")
