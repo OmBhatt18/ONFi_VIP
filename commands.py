@@ -1,3 +1,4 @@
+
 cmds = {
     'reset': {
         'cmd1': 0xFF,
@@ -182,3 +183,45 @@ cmds = {
         'await_data': True
     }
 }
+
+async def txn(name, addr=None, data=None):
+    txn_template = cmds[name]
+    txdata = []
+
+    # Add primary command byte
+    txdata.append(txn_template['cmd1'])
+
+    # Handle address if specified
+    if txn_template['addr_len'] is not None:
+        if addr is None:
+            addr = [0x00] * txn_template['addr_len']  # Default address if none provided
+        txdata.extend(addr[:txn_template['addr_len']])
+        
+    # Add optional second command byte if present
+    if txn_template['cmd2'] is not None:
+        txdata.append(txn_template['cmd2'])
+
+    # Add data if specified
+    if data is None and txn_template.get('data') is not None:
+        data = txn_template['data']
+    if data is not None:
+        txdata.extend(data)
+
+    # Send data
+    await _send_bytes(txdata)
+    
+    # Await data if required
+    if txn_template.get('await_data'):
+        rv = await _get_bytes(len(txdata))
+        return rv
+    else:
+        return None
+
+async def _send_bytes(txdata):
+    print(f"Sending bytes: {txdata}")
+
+async def _get_bytes(num_bytes):
+    rv = [0xFF] * num_bytes  # Dummy data for simulation
+    print(f"Received bytes: {rv}")
+    return rv
+

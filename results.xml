@@ -1,0 +1,9 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1721910953" />
+    <testcase name="test_reset" classname="test_onfi" file="/home/om/tests/ONFI/test_onfi.py" lineno="10" time="0.0010387897491455078" sim_time_ns="10.001" ratio_time="9627.549759926555" />
+    <testcase name="test_read_device_id" classname="test_onfi" file="/home/om/tests/ONFI/test_onfi.py" lineno="17" time="0.00024127960205078125" sim_time_ns="0.0010000000000012221" ratio_time="4.144569169965539" />
+    <testcase name="test_block_erase" classname="test_onfi" file="/home/om/tests/ONFI/test_onfi.py" lineno="25" time="0.0007481575012207031" sim_time_ns="10.001" ratio_time="13367.506151688973" />
+    <testcase name="test_standard_read" classname="test_onfi" file="/home/om/tests/ONFI/test_onfi.py" lineno="33" time="0.00016760826110839844" sim_time_ns="0.0010000000000012221" ratio_time="5.966293029879269" />
+  </testsuite>
+</testsuites>
