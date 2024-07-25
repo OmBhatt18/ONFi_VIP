@@ -1,4 +1,9 @@
-       'data': None,
+cmds = {
+    'reset': {
+        'cmd1': 0xFF,
+        'addr_len': None,
+        'cmd2': None,
+        'data': None,
         'await_data': False
     },
     'sync_reset': {
